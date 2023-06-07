@@ -46,7 +46,7 @@ class identification:
         return couleur
 
 
-class distribution :#toute la partie repartition du paquet de carte entre les 2 joueurs
+class distribution :# repartition du paquet de carte entre les 2 joueurs
     def __init__(self):
         self.paquet = list(range(0,52,1))#le paquet entier
         self.mainj1 = list(range(0,26,1))#la main du j1
@@ -109,16 +109,18 @@ class combat :
     def bataille(self,mainj1,mainj2):#se lance si self.gagnant = 3
         print("bataille !")
 
-        if len(mainj1)<=2: # si j1 a pas 3 cartes il ne peut pas participer a la bataille 
+        if len(mainj1)<=2: # si j1 n'a pas 3 cartes il ne peut pas participer a la bataille 
             print(" j1 ne peut pas assumer la bataille ")
             random.shuffle(mainj2) # on mélange le jeu de j2 et qui sait, peut etre une remontada (c'est jamais arrivé)
+            return
             
         if len(mainj2)<=2:#même chose avec j2
             print(" j2 ne peut pas assumer la bataille ")
             random.shuffle(mainj1)
+            return
             
 
-        print (identification.valeurdelacarte(mainj1[2]),"de", identification.couleurdelacarte(mainj1[2])) #on dit au joeurs que les cartes du haut de leurs paquets s'affrontent, et on leur dit la valeur de leur carte
+        print (identification.valeurdelacarte(mainj1[2]),"de", identification.couleurdelacarte(mainj1[2])) #on dit aux joeurs que les cartes du haut de leurs paquets s'affrontent, et on leur dit la valeur de leurs cartes
         print("vs")
         print( identification.valeurdelacarte(mainj2[2]),"de",identification.couleurdelacarte(mainj2[2]))
 
